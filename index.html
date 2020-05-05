@@ -1,1 +1,68 @@
-placer
+<!DOCTYPE html> 
+<head>
+	<title>PhotoLab in JS</title>
+	 <link href='https://fonts.googleapis.com/css?family=Product+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<style>
+	h1, h2 {
+		font-family: 'Product Sans', Arial, sans-serif;
+	}
+</style>
+
+<script>
+	
+	function loadImage(name){
+		var image = document.getElementById(name);
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		ctx.drawImage(image,0,0,896,577);	
+	}
+
+	function blackAndWhite(name) {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var image = document.getElementById(name);
+		ctx.drawImage(image,0,0,896,577);	
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = img.data[i];
+			var green = img.data[i + 1];
+			var blue = img.data[i + 2];
+			var alpha = img.data[i + 3];
+			var grayscale = (red + green + blue) / 3;
+			imgData.data[i] = grayscale;
+			imgData.data[i + 1] = grayscale;
+			imgData.data[i + 2] = grayscale;
+			imgData.data[i + 3] = alpha;
+		}
+		 ctx.clearRect(0, 0, canvas.width, canvas.height);
+		 ctx.putImageData(imgData, 0, 0);
+	}
+
+
+	function test() {
+		loadImage("goldengate");
+		document.getElementById("filters").hidden = false;
+	}
+
+</script>
+
+<body>
+	<h1>PhotoLab in Javascript</h1>
+	<img hidden id="goldengate" src="images/goldengate.jpg" width="480">
+	<button onclick="test()">Load Test Image: Golden Gate </button>
+	<br></br>
+	<canvas id="workspace" width="896" height="577" style="border:2px solid #000000;">
+	</canvas>
+
+	<div hidden id="filters">
+		<h2>Filters:</h2>
+		<button onclick="blackAndWhite('goldengate')">Black and White</button>
+		<button>Sharpen</button>
+		<button>xRG</button>
+	</div>
+</body>
+
+</html>
