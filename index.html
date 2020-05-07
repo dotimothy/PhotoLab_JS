@@ -39,6 +39,30 @@
 		 ctx.putImageData(imgData, 0, 0);
 	}
 
+	//Inverts All Colors
+	function inversion() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = imgData.data[i];
+			var green = imgData.data[i + 1];
+			var blue = imgData.data[i + 2];
+			var alpha = imgData.data[i + 3];
+			imgData.data[i] = 255 - red;
+			imgData.data[i + 1] = 255 - green;
+			imgData.data[i + 2] = 255 - blue;
+			imgData.data[i + 3] = alpha;
+		}
+		 ctx.putImageData(imgData, 0, 0);
+	}
+
+	function clear() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		ctx.clearRect(0,0,canvas.width,canvas.height);
+	}
 
 	function test() {
 		loadImage("goldengate");
@@ -49,7 +73,7 @@
 
 <body>
 	<h1>PhotoLab in Javascript</h1>
-	<img hidden id="goldengate" src="goldengate.jpg" width="480px">
+	<img hidden id="goldengate" src="goldengate.jpg">
 	<button onclick="test()">Load Test Image: Golden Gate</button>
 	<br></br>
 	<canvas id="workspace" width="896" height="577" style="border:2px solid #000000;">
@@ -58,9 +82,15 @@
 	<div hidden id="filters">
 		<h2>Filters:</h2>
 		<button onclick="blackAndWhite()">Black and White</button>
+		<button onclick="inversion()">Invert</button>
 		<button>Sharpen</button>
 		<button>xRG</button>
+		<button onclick="clear()">Restart</button>
 	</div>
+
+	<footer>
+		<h2>Made by <a href="https://dotimothy.github.io">@Timothy Do. </a>All Rights Reserved under the MIT License.</h2>
+	</footer>
 </body>
 
 </html>
