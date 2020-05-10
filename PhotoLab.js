@@ -114,6 +114,41 @@
 		 logFilter("Blue Filter");
 
 	}
+
+	//Sepia Filter
+	function sepia() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = imgData.data[i];
+			var green = imgData.data[i + 1];
+			var blue = imgData.data[i + 2];
+			var alpha = imgData.data[i + 3];
+			var sepRed = ((0.393 * red) + (0.769 * green) + (0.189 * blue));
+			var sepGreen = ((0.349 * red) + (0.686 * green) + (0.168 * blue));
+			var sepBlue = ((0.272 * red) * (0.534 * green) + (0.131 * blue));
+			sepRed.toFixed(0);
+			sepGreen.toFixed(0);
+			sepBlue.toFixed(0);
+			if(sepRed > 255) {
+				sepRed = 255;
+			}
+			if(sepGreen > 255) {
+				sepGreen = 255;
+			}
+			if(sepBlue > 255) {
+				sepBlue = 255;
+			}
+			imgData.data[i] = sepRed;
+			imgData.data[i + 1] = sepGreen;
+			imgData.data[i + 2] = sepBlue;
+			imgData.data[i + 3] = alpha;
+		}
+		 ctx.putImageData(imgData, 0, 0);
+		 logFilter("Sepia");
+	}
 	
 
 	//Switches R&G Color Channels
