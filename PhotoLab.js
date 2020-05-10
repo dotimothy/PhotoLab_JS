@@ -10,6 +10,8 @@
 		var ctx = canvas.getContext("2d");
 		canvas.width = screen.width / 1.5;
 		canvas.height = screen.height / 1.5;
+		if((canvas.width/canvas.height) != (16/9)) {
+		canvas.width *= (16/9);
 		canvas.hidden = false;
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
