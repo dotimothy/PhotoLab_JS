@@ -12,19 +12,6 @@
 		canvas.height = screen.height / 2;
 ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
-		document.getElementById("filters").hidden = false;
-	}
-
-	//function for loading file
-	function loadFile(event) {
-		var image = document.getElementById("output");
-		image.width = screen.width / 10; 
-		image.height = screen.height / 10;
-		image.src = URL.createObjectURL(event.target.files[0]);
-		image.hidden = false;
-		document.getElementById("drawCustom").hidden = false;
-		document.getElementById("preview").hidden = false;
-		document.getElementById("androidButton").hidden = true;
 	}
 
 	//Ages the Photo
@@ -245,7 +232,12 @@ ctx.drawImage(image,0,0,canvas.width,canvas.height);
 
 	//restarts canvas
 	function restart() {
-		window.location.reload();
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		ctx.fillStyle = "#FFFFFF"
+		ctx.fillRect(0,0,canvas.width,canvas.height);
+		 document.getElementById("filterList").innerHTML = "Filters Active: ";
+		 document.getElementById("filters").hidden = true;
 	}
 
 	//logs filter to site
@@ -254,78 +246,38 @@ ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		filterList.innerHTML = "Filters Active: " + filterName;
 	}
 
-	//loads test image
+	//loads test image and unhides filter div
 	function test() {
 		loadImage("android");
-		document.getElementById("customButton").hidden = true;
-		document.getElementById("restart").hidden = false;
-		
-	}
-
-	//loads custom image
-	function custom() {
-		document.getElementById("restart").hidden = false;
-		document.getElementById("output").hidden = true;
-		document.getElementById("preview").hidden = true;
-		document.getElementById("drawCustom").hidden = true;
-		document.getElementById("customButton").hidden = true;
-		loadImage("output");
+		document.getElementById("filters").hidden = false;
 
 	}
 
 	//tests all functions
 	function auto() {
-		if (confirm('Press Ok to Test Android, Cancel to Test Custom')) {
-			alert("Testing All Functions!");
-			setTimeout(age, 500);
-			setTimeout(test, 1000);
-			setTimeout(blackAndWhite, 1500);
-			setTimeout(test, 2000);
-			setTimeout(inversion, 2500);
-			setTimeout(test, 3000);
-			setTimeout(red, 3500);
-			setTimeout(test, 4000);
-			setTimeout(green, 4500);
-			setTimeout(test, 5000);
-			setTimeout(blue, 5500);
-			setTimeout(test, 6000);
-			setTimeout(sepia, 6500);
-			setTimeout(test, 7000); 
-			setTimeout(xRG,  7500);
-			setTimeout(test, 8000);
-			setTimeout(xGB,  8500);
-			setTimeout(test, 9000);
-			setTimeout(xRG,  9500);
-			setTimeout(test, 10000);
-			setTimeout(yellow, 10500);
-			setTimeout(test, 11000);
-			setTimeout(alert, 11500, "All Tests Have Been Completed!");
-		  } 
-		  else {
-			alert("Testing All Functions!");
-			setTimeout(age, 500);
-			setTimeout(custom, 1000);
-			setTimeout(blackAndWhite, 1500);
-			setTimeout(custom, 2000);
-			setTimeout(inversion, 2500);
-			setTimeout(custom, 3000);
-			setTimeout(red, 3500);
-			setTimeout(custom, 4000);
-			setTimeout(green, 4500);
-			setTimeout(custom, 5000);
-			setTimeout(blue, 5500);
-			setTimeout(custom, 6000);
-			setTimeout(sepia, 6500);
-			setTimeout(custom, 7000); 
-			setTimeout(xRG,  7500);
-			setTimeout(custom, 8000);
-			setTimeout(xGB,  8500);
-			setTimeout(custom, 9000);
-			setTimeout(xRG,  9500);
-			setTimeout(custom, 10000);
-			setTimeout(yellow, 10500);
-			setTimeout(custom, 11000);
-			setTimeout(alert, 11500, "All Tests Have Been Completed!");
-		  }
-			
+		alert("Testing All Functions!");
+		setTimeout(age, 500);
+		setTimeout(test, 1000);
+		setTimeout(blackAndWhite, 1500);
+		setTimeout(test, 2000);
+		setTimeout(inversion, 2500);
+		setTimeout(test, 3000);
+		setTimeout(red, 3500);
+		setTimeout(test, 4000);
+		setTimeout(green, 4500);
+		setTimeout(test, 5000);
+		setTimeout(blue, 5500);
+		setTimeout(test, 6000);
+		setTimeout(sepia, 6500);
+		setTimeout(test, 7000); 
+		setTimeout(xRG,  7500);
+		setTimeout(test, 8000);
+		setTimeout(xGB,  8500);
+		setTimeout(test, 9000);
+		setTimeout(xRG,  9500);
+		setTimeout(test, 10000);
+		setTimeout(yellow, 10500);
+		setTimeout(test, 11000);
+		setTimeout(alert, 11500, "All Tests Have Been Completed!");
+		
 	}
