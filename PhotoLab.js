@@ -245,8 +245,11 @@
 
 	//restarts canvas
 	function restart() {
-		document.getElementById("workspace").hidden = true;
-		window.location.reload();
+		var canvas = document.getElementById("workspace");
+		canvas.hidden = true; 
+		canvas.width = 0; 
+		canvas.height = 0;
+		setTimeout(window.location.reload, 500);
 	}
 
 	//logs filter to site
