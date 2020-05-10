@@ -245,6 +245,7 @@
 
 	//restarts canvas
 	function restart() {
+		document.getElementById("workspace").hidden = true;
 		window.location.reload();
 	}
 
