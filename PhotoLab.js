@@ -8,8 +8,9 @@
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d");
-		canvas.width = screen.width;
-		canvas.height = screen.height;
+		canvas.width = 1280;
+		canvas.height = 720; 
+		canvas.hidden = false;
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
 		document.getElementById("filters").hidden = false;
@@ -249,6 +250,9 @@
 		canvas.hidden = true; 
 		canvas.width = 0; 
 		canvas.height = 0;
+		document.getElementById("filters").hidden = true;
+		document.getElementById("customButton").hidden = false;
+		document.getElementById("androidButton").hidden = false;
 		setTimeout(window.location.reload, 500);
 	}
 
