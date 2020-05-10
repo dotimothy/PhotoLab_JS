@@ -129,9 +129,6 @@
 			var sepRed = ((0.393 * red) + (0.769 * green) + (0.189 * blue));
 			var sepGreen = ((0.349 * red) + (0.686 * green) + (0.168 * blue));
 			var sepBlue = ((0.272 * red) * (0.534 * green) + (0.131 * blue));
-			sepRed.toFixed(0);
-			sepGreen.toFixed(0);
-			sepBlue.toFixed(0);
 			if(sepRed > 255) {
 				sepRed = 255;
 			}
@@ -171,6 +168,46 @@
 		 logFilter("xRG");
 	}
 
+	//Switches G&B Color Channels
+	function xGB() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = imgData.data[i];
+			var green = imgData.data[i + 1];
+			var blue = imgData.data[i + 2];
+			var alpha = imgData.data[i + 3];
+			imgData.data[i] = red;
+			imgData.data[i + 1] = blue;
+			imgData.data[i + 2] = green;
+			imgData.data[i + 3] = alpha;
+		}
+			ctx.putImageData(imgData, 0, 0);
+			logFilter("xGB");
+	}
+
+		//Switches R&B Color Channels
+		function xRB() {
+			var canvas = document.getElementById("workspace");
+			var ctx = canvas.getContext("2d");
+			var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+			console.log(imgData);
+			for(var i = 0; i < imgData.data.length; i += 4) {
+				var red = imgData.data[i];
+				var green = imgData.data[i + 1];
+				var blue = imgData.data[i + 2];
+				var alpha = imgData.data[i + 3];
+				imgData.data[i] = blue;
+				imgData.data[i + 1] = green;
+				imgData.data[i + 2] = red;
+				imgData.data[i + 3] = alpha;
+			}
+			 ctx.putImageData(imgData, 0, 0);
+			 logFilter("xRB");
+		}
+
 	//restarts canvas
 	function restart() {
 		var canvas = document.getElementById("workspace");
@@ -189,12 +226,34 @@
 
 	//loads test image and unhides filter div
 	function test() {
-		loadImage("goldengate");
+		loadImage("android");
 		document.getElementById("filters").hidden = false;
 
 	}
 
 	//tests all functions
 	function auto() {
-		alert("This is not possible right now.");
+		alert("Testing All Functions!");
+		setTimeout(age, 500);
+		setTimeout(test, 1000);
+		setTimeout(blackAndWhite, 1500);
+		setTimeout(test, 2000);
+		setTimeout(inversion, 2500);
+		setTimeout(test, 3000);
+		setTimeout(red, 3500);
+		setTimeout(test, 4000);
+		setTimeout(green, 4500);
+		setTimeout(test, 5000);
+		setTimeout(blue, 5500);
+		setTimeout(test, 6000);
+		setTimeout(sepia, 6500);
+		setTimeout(test, 7000); 
+		setTimeout(xRG,  7500);
+		setTimeout(test, 8000);
+		setTimeout(xGB,  8500);
+		setTimeout(test, 9000);
+		setTimeout(xRG,  9500);
+		setTimeout(test, 10000);
+		setTimeout(alert, 10500, "All Tests Have Been Completed!");
+		
 	}
