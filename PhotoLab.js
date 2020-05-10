@@ -8,13 +8,9 @@
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d");
-<<<<<<< HEAD
-		canvas.width = 640;
-		canvas.height = 360;
-ctx.drawImage(image,0,0,canvas.width,canvas.height);
-=======
+		canvas.width = screen.width;
+		canvas.height = screen.height;
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
->>>>>>> parent of 875f997... made it hide
 		logFilter("None");	
 	}
 
