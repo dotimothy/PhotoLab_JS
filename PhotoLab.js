@@ -8,6 +8,9 @@
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d");
+		canvas.width = screen.width / 1.5;
+		canvas.height = screen.height / 1.5;
+		canvas.hidden = false;
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
 	}
