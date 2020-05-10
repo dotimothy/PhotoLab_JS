@@ -8,12 +8,9 @@
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d");
-		canvas.width = screen.width / 1.5;
-		canvas.height = screen.height / 1.5;
-		if((canvas.width/canvas.height) != (16/9)) {
-		canvas.width *= (16/9);
-		canvas.hidden = false;
-		ctx.drawImage(image,0,0,canvas.width,canvas.height);
+		canvas.width = 640;
+		canvas.height = 360;
+ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
 		document.getElementById("filters").hidden = false;
 	}
