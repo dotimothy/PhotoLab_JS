@@ -207,6 +207,26 @@
 			 ctx.putImageData(imgData, 0, 0);
 			 logFilter("xRB");
 		}
+	
+	//Yellow Filter
+	function yellow() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = imgData.data[i];
+			var green = imgData.data[i + 1];
+			var blue = imgData.data[i + 2];
+			var alpha = imgData.data[i + 3];
+			imgData.data[i] = 1.25 * red;
+			imgData.data[i + 1] = 1.25 * green;
+			imgData.data[i + 2] = 0.5 * blue;
+			imgData.data[i + 3] = alpha;
+		}
+		 ctx.putImageData(imgData, 0, 0);
+		 logFilter("Yellow");
+	}
 
 	//restarts canvas
 	function restart() {
@@ -254,6 +274,8 @@
 		setTimeout(test, 9000);
 		setTimeout(xRG,  9500);
 		setTimeout(test, 10000);
-		setTimeout(alert, 10500, "All Tests Have Been Completed!");
+		setTimeout(yellow, 10500);
+		setTimeout(test, 11000);
+		setTimeout(alert, 11500, "All Tests Have Been Completed!");
 		
 	}
