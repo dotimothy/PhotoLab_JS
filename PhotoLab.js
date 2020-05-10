@@ -244,6 +244,19 @@
 		 logFilter("Yellow");
 	}
 
+	//Transparent
+	function transparent() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			imgData.data[i + 3] /= 2;
+		}
+			ctx.putImageData(imgData, 0, 0);
+			logFilter("Transparent");
+	}
+
 	//restarts canvas
 	function restart() {
 		var canvas = document.getElementById("workspace");
@@ -285,6 +298,7 @@
 	function auto() {
 		if (confirm('Press Ok to Test Android, Cancel to Test Custom')) {
 			alert("Testing All Functions!");
+			test(); 
 			setTimeout(age, 500);
 			setTimeout(test, 1000);
 			setTimeout(blackAndWhite, 1500);
@@ -307,10 +321,13 @@
 			setTimeout(test, 10000);
 			setTimeout(yellow, 10500);
 			setTimeout(test, 11000);
-			setTimeout(alert, 11500, "All Tests Have Been Completed!");
+			setTimeout(transparent,11500);
+			setTimeout(test,12000);
+			setTimeout(alert, 12500, "All Tests Have Been Completed!");
 		  } 
 		  else {
 			alert("Testing All Functions!");
+			custom();
 			setTimeout(age, 500);
 			setTimeout(custom, 1000);
 			setTimeout(blackAndWhite, 1500);
@@ -333,7 +350,9 @@
 			setTimeout(custom, 10000);
 			setTimeout(yellow, 10500);
 			setTimeout(custom, 11000);
-			setTimeout(alert, 11500, "All Tests Have Been Completed!");
+			setTimeout(transparent, 11500);
+			setTimeout(custom, 12000); 
+			setTimeout(alert, 12500, "All Tests Have Been Completed!");
 		  }
 			
 	}
