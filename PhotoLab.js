@@ -8,8 +8,14 @@
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d");
+<<<<<<< HEAD
 		canvas.width = screen.width;
 		canvas.height = screen.height;
+=======
+		canvas.width = screen.width / 1.5;
+		canvas.height = screen.height / 1.5;
+		canvas.hidden = false;
+>>>>>>> parent of 919554e... yw
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
 	}
