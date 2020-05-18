@@ -294,6 +294,13 @@
 
 	}
 
+	function saveImage() {
+		var canvas = document.getElementById("workspace");
+		var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+		window.location.href=image;
+	}
+
+
 	//tests all functions
 	function auto() {
 		if (confirm('Press Ok to Test Android, Cancel to Test Custom')) {

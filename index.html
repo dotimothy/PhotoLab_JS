@@ -17,6 +17,7 @@
 	<button id="androidButton" onclick="test()">Load Test Image: Android</button>
 	<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
 	<button id="customButton"><label for="file" style="cursor: pointer;">Upload Custom Image</label></button>
+	<button id="saveImage" onclick="saveImage()">Save Image</button>
 	<p hidden id="preview">Preview:</p>
 	<p><img hidden id="output"></p>
 	<button hidden id="drawCustom" onclick="custom()">Draw Custom Picture</button>
