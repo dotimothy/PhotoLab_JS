@@ -7,9 +7,7 @@
 	function loadImage(name){
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
-		var ctx = canvas.getContext("2d");
-		canvas.width = 1280;
-		canvas.height = 720; 
+		var ctx = canvas.getContext("2d"); 
 		canvas.hidden = false;
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
@@ -298,6 +296,15 @@
 		var canvas = document.getElementById("workspace");
 		var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 		window.location.href=image;
+	}
+
+	function resizeCanvas(width,height) {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		canvas.width = width;
+		canvas.height = height;
+		ctx.putImageData(imgData, 0, 0);
 	}
 
 
