@@ -258,6 +258,28 @@
 			logFilter("Transparent");
 	}
 
+	//Saturates the Image
+	function saturate() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = imgData.data[i];
+			var green = imgData.data[i + 1];
+			var blue = imgData.data[i + 2];
+			var alpha = imgData.data[i + 3];
+			imgData.data[i] = 1.1 * red;
+			imgData.data[i + 1] = 1.1 * green;
+			imgData.data[i + 2] = 1.1 * blue;
+			imgData.data[i + 3] = alpha;
+		}
+		 ctx.putImageData(imgData, 0, 0);
+		 logFilter("Saturate");
+	}
+
+	
+
 	//restarts canvas
 	function restart() {
 		var canvas = document.getElementById("workspace");
