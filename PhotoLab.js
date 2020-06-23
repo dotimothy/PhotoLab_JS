@@ -2,9 +2,10 @@
 * Created by Timothy Do 
 */
 
-
+	var imageName;
 	//loads image
 	function loadImage(name){
+		imageName = name;
 		var image = document.getElementById(name);
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d"); 
@@ -17,10 +18,12 @@
 	//function for loading file
 	function loadFile(event) {
 		var image = document.getElementById("output");
-		image.width = screen.width / 10; 
-		image.height = screen.height / 10;
+		var preview = document.getElementById("input");
+		preview.width = screen.width / 10; 
+		preview.height = screen.height / 10;
 		image.src = URL.createObjectURL(event.target.files[0]);
-		image.hidden = false;
+		preview.src = URL.createObjectURL(event.target.files[0]);
+		preview.hidden = false;
 		document.getElementById("drawCustom").hidden = false;
 		document.getElementById("preview").hidden = false;
 		document.getElementById("androidButton").hidden = true;
@@ -284,7 +287,7 @@
 	//loads custom image
 	function custom() {
 		document.getElementById("restart").hidden = false;
-		document.getElementById("output").hidden = true;
+		document.getElementById("input").hidden = true;
 		document.getElementById("preview").hidden = true;
 		document.getElementById("drawCustom").hidden = true;
 		document.getElementById("customButton").hidden = true;
@@ -300,13 +303,15 @@
 
 	function resizeCanvas(width,height) {
 		var canvas = document.getElementById("workspace");
-		var ctx = canvas.getContext("2d");
-		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
 		canvas.width = width;
 		canvas.height = height;
-		ctx.putImageData(imgData, 0, 0);
+		loadImage(imageName);
 	}
 
+	function fullImage() {
+		var image = document.getElementById(imageName);
+		resizeCanvas(image.width,image.height);
+	}
 
 	//tests all functions
 	function auto() {
