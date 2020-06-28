@@ -13,6 +13,7 @@
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
 		document.getElementById("filters").hidden = false;
+		document.getElementById("fullImage").hidden = false;
 	}
 
 	//function for loading file

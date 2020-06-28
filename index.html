@@ -13,7 +13,7 @@
 
 <body>
 	<h1>PhotoLab in Javascript</h1>
-	<button onclick="fullImage()">Full Image</button>
+	<button hidden onclick="fullImage()" id="fullImage">Full Image</button>
 	<img hidden id="android" src="android.jpg">
 	<button id="androidButton" onclick="test()">Load Test Image: Android</button>
 	<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
