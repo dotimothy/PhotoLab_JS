@@ -14,6 +14,7 @@
 		logFilter("None");	
 		document.getElementById("filters").hidden = false;
 		document.getElementById("fullImage").hidden = false;
+		document.getElementById("saveImage").hidden = false;
 	}
 
 	//function for loading file
