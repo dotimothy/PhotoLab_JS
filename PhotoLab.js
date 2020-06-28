@@ -280,7 +280,58 @@
 		 logFilter("Saturate");
 	}
 
+	//mirrors the image
+	function verticalmirror() {
+	var canvas = document.getElementById("workspace");
+	var ctx = canvas.getContext("2d");
+	var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	console.log(imgData);
+	for(var i = 0; i < imgData.data.length / 2; i += 4) {
+		var length = imgData.data.length;
+		var red = imgData.data[i];
+		var green = imgData.data[i + 1];
+		var blue = imgData.data[i + 2];
+		var alpha = imgData.data[i + 3];
+		var tred = imgData.data[length - i - 4];
+		var tgreen = imgData.data[length - i - 3];
+		var tblue = imgData.data[length - i - 2];
+		var talpha = imgData.data[length - i - 1];
+		imgData.data[i] = tred;
+		imgData.data[i + 1] = tgreen;
+		imgData.data[i + 2] = tblue;
+		imgData.data[i + 3] = talpha;
+		imgData.data[length - i - 4] = red;
+		imgData.data[length - i - 3] = green;
+		imgData.data[length - i - 2] = blue;
+		imgData.data[length - i - 1] = alpha;
+	}
+	 ctx.putImageData(imgData, 0, 0);
+	 logFilter("Vertical Mirror");
+	}
+
+	//adds noise to the image
+	function noise() {
+	var canvas = document.getElementById("workspace");
+	var ctx = canvas.getContext("2d");
+	var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+	console.log(imgData);
+	for(var i = 0; i < imgData.data.length; i += 25) {
+		if((i/4) % 2 == 0) {
+		imgData.data[i] =  0;
+		imgData.data[i + 1] =  0;
+		imgData.data[i + 2] = 0;
+		}
+		else if((i/4) % 2 == 1) {
+		imgData.data[i] =  255;
+		imgData.data[i + 1] =  255;
+		imgData.data[i + 2] = 255;
+		}
 	
+	}
+	 ctx.putImageData(imgData, 0, 0);
+	 logFilter("Noise");
+
+	}
 
 	//restarts canvas
 	function restart() {
