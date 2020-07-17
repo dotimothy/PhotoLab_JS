@@ -333,6 +333,25 @@
 
 	}
 
+	function detectEdge() {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		ctx.putImageData(imgData, 0, 0);
+		var data = imgData.data;
+		var width = imgData.width;
+		var limit = data.length;
+		for(var i = 0; i < limit; i++) {
+			if( i%4 == 3 ) {
+				continue;
+			} 
+			data[i] = 127 + 2*data[i] - data[i + 4] - data[i + width*4];
+		}
+		ctx.putImageData(imgData, 0, 0);
+	 	logFilter("Edge Detection");
+
+	}
+
 	//restarts canvas
 	function restart() {
 		var canvas = document.getElementById("workspace");
