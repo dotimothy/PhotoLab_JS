@@ -353,6 +353,40 @@
 
 	}
 
+	//Switches the Two Colors given hex values
+	function switchColor(r1,g1,b1,r2,g2,b2) {
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		console.log(imgData);
+		for(var i = 0; i < imgData.data.length; i += 4) {
+			var red = imgData.data[i];
+			var green = imgData.data[i + 1];
+			var blue = imgData.data[i + 2];
+			var alpha = imgData.data[i + 3];
+			correctColor = (red == r1) && (green == g1) && (blue == b1);
+			if(correctColor) {
+				imgData.data[i] = r2;
+				imgData.data[i + 1] = g2;
+				imgData.data[i + 2] = b2;
+				imgData.data[i + 3] = alpha;
+			}
+		}
+		 ctx.putImageData(imgData, 0, 0);
+		 logFilter("Switched Color");
+	}
+
+	function promptColor() {
+		var r1 = prompt("Enter R Color to Switch from");
+		var g1 = prompt("Enter G Color to Switch from");
+		var b1 = prompt("Enter B Color to Switch from");
+		var r2 = prompt("Enter R Color to Switch to");
+		var g2 = prompt("Enter G Color to Switch to");
+		var b2 = prompt("Enter B Color to Switch to");
+		switchColor(r1,g1,b1,r2,g2,b2);
+	}
+
+
 	//restarts canvas
 	function restart() {
 		var canvas = document.getElementById("workspace");
