@@ -384,6 +384,7 @@
 		var g2 = prompt("Enter G Color to Switch to");
 		var b2 = prompt("Enter B Color to Switch to");
 		switchColor(r1,g1,b1,r2,g2,b2);
+		alert("Switched!");
 	}
 
 
