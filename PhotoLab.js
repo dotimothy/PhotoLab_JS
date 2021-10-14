@@ -443,6 +443,13 @@
 		resizeCanvas(image.width,image.height);
 	}
 
+	function promptResize() {
+		var newWidth = prompt("New Width:"); 
+		var newHeight = prompt("New Height");
+		resizeCanvas(newWidth,newHeight);
+		alert("Resized!");
+	}
+
 	//tests all functions
 	function auto() {
 		if (confirm('Press Ok to Test Android, Cancel to Test Custom')) {
