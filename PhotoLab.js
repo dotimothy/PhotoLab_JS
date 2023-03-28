@@ -392,8 +392,8 @@
 	function restart() {
 		var canvas = document.getElementById("workspace");
 		canvas.hidden = true; 
-		canvas.width = 720; 
-		canvas.height = 1280;
+		canvas.width = 1280; 
+		canvas.height = 720;
 		document.getElementById("filters").hidden = true;
 		document.getElementById("restart").hidden = true; 
 		document.getElementById("saveImage").hidden = true;
