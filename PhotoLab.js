@@ -10,8 +10,6 @@
 		var canvas = document.getElementById("workspace");
 		var ctx = canvas.getContext("2d"); 
 		canvas.hidden = false;
-		canvas.width = 1280;
-		canvas.height = 720;
 		ctx.drawImage(image,0,0,canvas.width,canvas.height);
 		logFilter("None");	
 		document.getElementById("filters").hidden = false;
@@ -394,8 +392,8 @@
 	function restart() {
 		var canvas = document.getElementById("workspace");
 		canvas.hidden = true; 
-		canvas.width = 0; 
-		canvas.height = 0;
+		canvas.width = 720; 
+		canvas.height = 1280;
 		document.getElementById("filters").hidden = true;
 		document.getElementById("restart").hidden = true; 
 		document.getElementById("saveImage").hidden = true;
