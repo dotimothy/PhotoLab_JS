@@ -431,9 +431,10 @@
 	}
 
 	function saveImage() {
+		var download = document.getElementById("download");
 		var canvas = document.getElementById("workspace");
 		var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-		window.location.href=image;
+		download.setAttribute("href",image);
 	}
 
 	function resizeCanvas(width,height) {
