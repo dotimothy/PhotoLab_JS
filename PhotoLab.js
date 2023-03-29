@@ -448,9 +448,10 @@
 	}
 
 	function promptResize() {
-		var newWidth = prompt("New Width:"); 
-		var newHeight = prompt("New Height");
-		resizeCanvas(newWidth,newHeight);
+		var scale = prompt('Scale Image By:');
+		var width = document.getElementById("workspace").width;
+		var height = document.getElementById("workspace").height;
+		resizeCanvas(Math.round(scale*width),Math.round(scale*height));
 		alert("Resized!");
 	}
 
