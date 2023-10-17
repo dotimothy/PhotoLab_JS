@@ -353,6 +353,21 @@
 
 	}
 
+	function threshold(thresh) {
+		blackAndWhite();
+		var canvas = document.getElementById("workspace");
+		var ctx = canvas.getContext("2d");
+		var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+		ctx.putImageData(imgData, 0, 0);
+		for(var i = 0; i < imgData.data.length; i++) {
+			imgData.data[i] = imgData.data[i] > thresh ? 255 : 0;
+		}
+		ctx.putImageData(imgData, 0, 0);
+	 	logFilter("Threshold");
+
+
+	}
+
 	//Switches the Two Colors given hex values
 	function switchColor(r1,g1,b1,r2,g2,b2) {
 		var canvas = document.getElementById("workspace");
@@ -374,6 +389,12 @@
 		}
 		 ctx.putImageData(imgData, 0, 0);
 		 logFilter("Switched Color");
+	}
+
+	function promptThreshold() {
+		var thresh = prompt('Select a Graylevel Threshold (0-255)');
+		threshold(thresh); 
+		alert(`Thresholded with Value ${thresh}!`);
 	}
 
 	function promptColor() {
